@@ -1,0 +1,16 @@
+{
+    "name": "wuqinqiang/design-patterns",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wuqinqiang",
+            "email": "1185079673@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Remember\\Patterns\\": "src/"
+        }
+    },
+    "require": {}
+}
