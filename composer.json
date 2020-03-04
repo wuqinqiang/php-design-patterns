@@ -12,5 +12,6 @@
             "Remember\\Patterns\\": "src/"
         }
     },
-    "require": {}
+    "require": {
+    }
 }
