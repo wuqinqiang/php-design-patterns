@@ -10,6 +10,9 @@ use Remember\Patterns\object\patterns\Builder\TruckBuilder;
 use Remember\Patterns\object\patterns\Decorator\JSonRender;
 use Remember\Patterns\object\patterns\Decorator\WebService;
 use Remember\Patterns\object\patterns\Decorator\XmlRender;
+use Remember\Patterns\object\patterns\Facade\Event;
+use Remember\Patterns\object\patterns\Facade\UserCourse;
+use Remember\Patterns\object\patterns\Facade\WeChatMessage;
 use Remember\Patterns\object\patterns\Proxy\RecordProxy;
 use Remember\Patterns\object\patterns\Singleton1;
 
@@ -60,13 +63,20 @@ require_once __DIR__ . '/vendor/autoload.php';
 //var_dump($serviceJson->renderDate());
 
 //适配器
-$kind=new Kindle();
+//$kind=new Kindle();
+//
+//$Ebook=new Ebook($kind);
+//
+//var_dump($Ebook->getPage());
+//var_dump($Ebook->open());
+//var_dump($Ebook->turnPage());
 
-$Ebook=new Ebook($kind);
+//门面
+$wechat=new WeChatMessage();
+$userCourse=new UserCourse();
+$event=new Event($wechat,$userCourse);
+$event->buyCourseHandle('wuqinqiang');
 
-var_dump($Ebook->getPage());
-var_dump($Ebook->open());
-var_dump($Ebook->turnPage());
 
 
 
