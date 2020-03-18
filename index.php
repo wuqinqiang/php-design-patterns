@@ -3,6 +3,8 @@
 namespace Remember\Patterns\object\ocp;
 
 use Remember\Patterns\object\Di;
+use Remember\Patterns\object\patterns\Adapter\Ebook;
+use Remember\Patterns\object\patterns\Adapter\Kindle;
 use Remember\Patterns\object\patterns\Builder\Director;
 use Remember\Patterns\object\patterns\Builder\TruckBuilder;
 use Remember\Patterns\object\patterns\Decorator\JSonRender;
@@ -50,12 +52,21 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 //装饰者
 
-$decor=new WebService('wuqinqiang');
+//$decor=new WebService('wuqinqiang');
+//
+//$serviceXlm=new XmlRender($decor);
+//$serviceJson=new JSonRender($decor);
+//
+//var_dump($serviceJson->renderDate());
 
-$serviceXlm=new XmlRender($decor);
-$serviceJson=new JSonRender($decor);
+//适配器
+$kind=new Kindle();
 
-var_dump($serviceJson->renderDate());
+$Ebook=new Ebook($kind);
+
+var_dump($Ebook->getPage());
+var_dump($Ebook->open());
+var_dump($Ebook->turnPage());
 
 
 
