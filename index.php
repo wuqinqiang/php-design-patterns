@@ -13,6 +13,10 @@ use Remember\Patterns\object\patterns\Decorator\XmlRender;
 use Remember\Patterns\object\patterns\Facade\Event;
 use Remember\Patterns\object\patterns\Facade\UserCourse;
 use Remember\Patterns\object\patterns\Facade\WeChatMessage;
+use Remember\Patterns\object\patterns\Fly\Test;
+use Remember\Patterns\object\patterns\Observer\OrderServer;
+use Remember\Patterns\object\patterns\Observer\SmsService;
+use Remember\Patterns\object\patterns\Observer\WechatService;
 use Remember\Patterns\object\patterns\Proxy\RecordProxy;
 use Remember\Patterns\object\patterns\Singleton1;
 
@@ -72,10 +76,24 @@ require_once __DIR__ . '/vendor/autoload.php';
 //var_dump($Ebook->turnPage());
 
 //门面
-$wechat=new WeChatMessage();
-$userCourse=new UserCourse();
-$event=new Event($wechat,$userCourse);
-$event->buyCourseHandle('wuqinqiang');
+//$wechat=new WeChatMessage();
+//$userCourse=new UserCourse();
+//$event=new Event($wechat,$userCourse);
+//$event->buyCourseHandle('wuqinqiang');
+
+//享元
+//$test=new Test();
+//
+//$test->test();
+
+//观察者
+
+$order = new OrderServer();
+
+$order->registerObserver(new WechatService());
+$order->registerObserver(new SmsService());
+//下单了 我要通知一直盯着我的人
+$order->notice();
 
 
 
