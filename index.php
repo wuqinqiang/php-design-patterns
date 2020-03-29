@@ -8,6 +8,10 @@ use Remember\Patterns\object\patterns\Adapter\Kindle;
 use Remember\Patterns\object\patterns\Builder\Director;
 use Remember\Patterns\object\patterns\Builder\TruckBuilder;
 use Remember\Patterns\object\patterns\Decorator\JSonRender;
+use Remember\Patterns\object\patterns\Decorator\Test2\Dressing;
+use Remember\Patterns\object\patterns\Decorator\Test2\Espresso;
+use Remember\Patterns\object\patterns\Decorator\Test2\Mocha;
+use Remember\Patterns\object\patterns\Decorator\Test2\Whip;
 use Remember\Patterns\object\patterns\Decorator\WebService;
 use Remember\Patterns\object\patterns\Decorator\XmlRender;
 use Remember\Patterns\object\patterns\Facade\Event;
@@ -19,6 +23,7 @@ use Remember\Patterns\object\patterns\Observer\SmsService;
 use Remember\Patterns\object\patterns\Observer\WechatService;
 use Remember\Patterns\object\patterns\Proxy\RecordProxy;
 use Remember\Patterns\object\patterns\Singleton1;
+use Remember\Patterns\object\reflection\Circle;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -88,12 +93,36 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 //观察者
 
-$order = new OrderServer();
+//$order = new OrderServer();
+//
+//$order->registerObserver(new WechatService());
+//$order->registerObserver(new SmsService());
+////下单了 我要通知一直盯着我的人
+//$order->notice();
 
-$order->registerObserver(new WechatService());
-$order->registerObserver(new SmsService());
-//下单了 我要通知一直盯着我的人
-$order->notice();
+//装饰者2
+//$espresso=new Espresso();
+//
+//$dress=new Dressing($espresso);
+//
+//$whip=new Whip($dress);
+//$whip=new Whip($whip);
+//
+//
+//$Mocha=new Mocha($whip);
+//
+//
+//var_dump($Mocha->cost());
+
+//装饰者3
+
+
+//反射
+$test = new \Remember\Patterns\object\reflection\Test();
+$circle = $test->make(Circle::class);
+var_dump($circle,$circle->area());
+
+
 
 
 
